@@ -24,14 +24,16 @@ The expected minimum amount of time each Sprint for each category is as follows:
 
 ## Time Log
 
-|Date      |Start Time|Category|Description                                 |Total Minutes|
-|----------|----------|:------:|--------------------------------------------|:-----------:|
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
+
+
+| Date       | Start Time | Category | Description                                                                                         | Total Minutes |
+|------------|------------|:--------:|-----------------------------------------------------------------------------------------------------|:-------------:|
+| 2024-09-23 | 5:00 PM    |    IM    | Initial research on stock market data analysis, Python environment setup, and exploring datasets.    |      180      |
+| 2024-09-24 | 5:00 PM    |    IM    | Practiced using Pandas library to manipulate data and performed initial data analysis.              |      120      |
+| 2024-09-25 | 5:00 PM    |    IM    | Planned software structure for stock analysis and created basic script for data filtering.          |       90      |
+| 2024-09-26 | 5:00 PM    |    IM    | Implemented daily growth calculations, tested outputs, and corrected initial bugs.                  |       90      |
+| 2024-10-04 | 5:00 PM    |    IM    | Added cumulative growth calculations and refined filtering of stocks based on user input.           |       60      |
+| 2024-10-05 | 8:00 PM    |    IM    | Worked on visualization: created plots for daily and cumulative stock growth using Matplotlib.      |       60      |
 
 _Note: Add more rows as needed._
 
@@ -39,7 +41,7 @@ _Note: Add more rows as needed._
 
 |Categroy                       |Total Time (Hours:Minutes)|
 |-------------------------------|:------------------------:|
-|IM - Individual Module         |                          |
-|TP - Team Project              |                          |
+|IM - Individual Module         |          10:00           |
+|TP - Team Project              |          4:00            |
 |MTG - Class Meetings           |                          |
 |**TOTAL**                      |                          |
