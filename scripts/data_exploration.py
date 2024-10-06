@@ -9,7 +9,7 @@ def load_data(file_path):
     """
     try:
         # Load the dataset with appropriate parsing
-        df = pd.read_csv(file_path, parse_dates=['Date'])
+        df = pd.read_csv(file_path, parse_dates=['date'])
 
         # Display basic information about the dataset
         print("Dataset loaded successfully.")
