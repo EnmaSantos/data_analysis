@@ -11,6 +11,10 @@ def load_data(file_path):
     
     # Capitalize brand names
     df['Brand_Name'] = df['Brand_Name'].str.title()
+
+    # Round 'High' and 'Low' columns to 2 decimal places
+    df['High'] = df['High'].round(2)
+    df['Low'] = df['Low'].round(2)
     
     # Calculate daily growth as percentage change from Open to Close
     df['Daily_Growth (%)'] = ((df['Close'] - df['Open']) / df['Open'] * 100).round(2)
