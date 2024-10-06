@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 def load_data(file_path):
     file_path = 'data/World-Stock-Prices-Dataset.csv'
@@ -46,8 +47,8 @@ def main():
     df = load_data(file_path)
     
     # Display the latest date in the dataset
-    latest_date = df['Date'].max()
-    print(f"The latest available date in the dataset is: {latest_date.date()}")
+    latest_date = df['Date'].max().date()  # Ensuring `latest_date` is a date object
+    print(f"The latest available date in the dataset is: {latest_date}")
     
     # Ask how many brands to analyze
     num_brands = int(input("How many brands do you want to check? "))
@@ -59,7 +60,14 @@ def main():
         brands.append(brand_name)
     
     # Ask how many days back to analyze
-    days_back = int(input(f"How many days back from {latest_date.date()} do you want to check? "))
+    days_back = input(f"How many days back from {latest_date} do you want to check? ").strip()
+
+    # Ensure the `days_back` is an integer
+    try:
+        days_back = int(days_back)
+    except ValueError:
+        print("Invalid input for days back. Please enter a valid number.")
+        return
     
     # Get filtered stock data
     stock_data, latest_date = get_stock_data(df, brands, days_back)
@@ -71,9 +79,10 @@ def main():
         # Display the relevant information
         print("\nFiltered Stock Data:")
         print(stock_data[['Date', 'Brand_Name', 'High', 'Low', 'Daily_Growth (%)', 'Cumulative_Growth (%)']])
-    # Save the DataFrame to the results folder
-    stock_data.to_csv('results/cumulative_growth.csv', index=False)
-
+    
+        # Save the DataFrame to the results folder
+        os.makedirs('results', exist_ok=True)
+        stock_data.to_csv('results/cumulative_growth.csv', index=False)
 
 if __name__ == "__main__":
     main()
