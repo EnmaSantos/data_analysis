@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def load_data(file_path):
     # Load the dataset
@@ -13,9 +14,6 @@ def load_data(file_path):
     # Round 'High' and 'Low' columns to 2 decimal places
     df['High'] = df['High'].round(2)
     df['Low'] = df['Low'].round(2)
-    df['Open'] = df['Open'].round(2)
-    df['Close'] = df['Close'].round(2)
-    
     
     # Calculate daily growth as percentage change from Open to Close
     df['Daily_Growth (%)'] = ((df['Close'] - df['Open']) / df['Open'] * 100).round(2)
@@ -27,6 +25,18 @@ def get_stock_data(df, brands, specific_date):
     stock_data = df[(df['Brand_Name'].isin(brands)) & (df['Date'].astype(str) == specific_date)]
     
     return stock_data
+
+def plot_daily_growth(stock_data, specific_date):
+    # Plot the daily growth for each brand as a bar chart
+    plt.figure(figsize=(10, 5))
+    plt.bar(stock_data['Brand_Name'], stock_data['Daily_Growth (%)'], color='skyblue')
+    plt.title(f"Daily Growth on {specific_date}")
+    plt.xlabel('Brand')
+    plt.ylabel('Daily Growth (%)')
+    plt.xticks(rotation=45)
+    # Save the plot
+    plt.savefig(f'results/daily_growth_{specific_date}.png')
+    plt.show()
 
 def main():
     # Load dataset
@@ -59,8 +69,9 @@ def main():
         # Display daily growth information for that date
         print("\nDaily Growth on", specific_date)
         print(stock_data[['Date', 'Brand_Name', 'Open', 'Close', 'Daily_Growth (%)']])
-    # Save the daily growth data to a CSV file
-    stock_data.to_csv(f'results/daily_growth_{specific_date}.csv', index=False)
+        
+        # Plot the daily growth for visualization
+        plot_daily_growth(stock_data, specific_date)
 
 if __name__ == "__main__":
     main()
