@@ -27,7 +27,9 @@ def get_stock_data(df, brands, days_back):
 
     # Reset index for clarity
     stock_data = stock_data.reset_index(drop=True)
-
+    
+     # **Sort by 'Brand_Name' and 'Date'**
+    stock_data = stock_data.sort_values(by=['Brand_Name', 'Date'])
     return stock_data, latest_date
 
 def calculate_cumulative_growth(stock_data):
